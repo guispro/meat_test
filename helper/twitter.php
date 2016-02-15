@@ -2,8 +2,6 @@
 
 class Twitter {
 	
-	// public $Haktash = '#meat';
-
 	public function postByHaktash(){
 		
 		$url = 'https://api.twitter.com/1.1/search/tweets.json';
@@ -25,8 +23,6 @@ class Twitter {
 			$twitter_response[] = ['text' => $value->text, 'created_at' => $value->created_at, 'likes' => $value->retweet_count];
 
 		}
-
-		// return json_decode($twits);
 		return $twitter_response;
 	}	
 }

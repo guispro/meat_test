@@ -7,14 +7,16 @@ class Post {
 	public function index(){
 		echo "Hello world";
 		$twitter = new Twitter;
+		$instagram = new Instagram;
 
-		if (is_object($twitter)){
-			echo "<pre>";
-			print_r($twitter->postByHaktash());
-			echo "</pre>";
-		}else{
-			echo 'nup';
-		}
+		echo "<pre>";
+		print_r($twitter->postByHaktash());
+		echo "</pre>";
+
+		echo "<pre>";
+		print_r($instagram->getData());
+		echo "</pre>";
+		
 
 	}
 
