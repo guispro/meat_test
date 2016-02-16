@@ -19,11 +19,11 @@ foreach (glob("helper/*.php") as $filename)
     $filename = ucfirst(strtolower($filename));
     $class = strtolower($filename);
     $$class = new $filename;
-    if(is_object($$class)){
-    	echo $class . '- Esta correcto <br>';
-    }else{
-    	echo $class . '- No se creo <br>';
-    }
+    // if(is_object($$class)){
+    // 	echo $class . '- Esta correcto <br>';
+    // }else{
+    // 	echo $class . '- No se creo <br>';
+    // }
 }
 
 

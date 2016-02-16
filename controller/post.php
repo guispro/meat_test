@@ -5,22 +5,38 @@
 class Post {
 
 	public function index(){
-		echo "Hello world";
 		$twitter = new Twitter;
 		$instagram = new Instagram;
 
-		echo "<pre>";
-		print_r($twitter->postByHaktash());
-		echo "</pre>";
+		$twits = $twitter->postByHaktash();
 
-		echo "<pre>";
-		print_r($instagram->getData());
-		echo "</pre>";
+		$post = $twits;
+
+		usort($post, array($this,'_sortDate'));
+
 		
+		echo json_encode($post);
 
 	}
 
 	public function likes(){
-		echo "This could be likes";
+		$twitter = new Twitter;
+		$instagram = new Instagram;
+
+		$twits = $twitter->postByHaktash();
+
+		$post = $twits;
+
+		usort($post, array($this,'_sortLikes'));
+
+		echo json_encode($post);
 	}
+
+	private function _sortDate($a, $b){
+		return strtotime($a['date']) - strtotime($b['date']);
+	}
+
+	private function _sortLikes($a, $b){
+		return $a['likes'] - $b['likes'];
+	}	
 }

@@ -20,7 +20,12 @@ class Twitter {
 		             ->performRequest();
 		$arrayTwits = json_decode($twits);
 		foreach ($arrayTwits->statuses as $value) {
-			$twitter_response[] = ['text' => $value->text, 'created_at' => $value->created_at, 'likes' => $value->retweet_count];
+			$twitter_response[] = [
+				'type' => 'twitter',
+				'content' => $value->text, 
+				'date' => $value->created_at, 
+				'likes' => $value->retweet_count
+			];
 
 		}
 		return $twitter_response;
