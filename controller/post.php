@@ -10,11 +10,13 @@ class Post {
 
 		$twits = $twitter->postByHaktash();
 
-		$post = $twits;
+                $instadata = $instagram->getData();
+
+                // $post = $twits;
+		$post = array_merge($instadata,$twits);
 
 		usort($post, array($this,'_sortDate'));
 
-		
 		echo json_encode($post);
 
 	}
@@ -25,7 +27,10 @@ class Post {
 
 		$twits = $twitter->postByHaktash();
 
-		$post = $twits;
+		$instadata = $instagram->getData();
+
+                // $post = $twits;
+                $post = array_merge($instadata,$twits);
 
 		usort($post, array($this,'_sortLikes'));
 

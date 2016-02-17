@@ -19,11 +19,6 @@ foreach (glob("helper/*.php") as $filename)
     $filename = ucfirst(strtolower($filename));
     $class = strtolower($filename);
     $$class = new $filename;
-    // if(is_object($$class)){
-    // 	echo $class . '- Esta correcto <br>';
-    // }else{
-    // 	echo $class . '- No se creo <br>';
-    // }
 }
 
 
@@ -38,17 +33,20 @@ $params = explode('/', $q);
 
 if(count($params) > 1){
 
-	if(isset($params[1])){
-		$controller = ucfirst(strtolower($params[1]));
-	}else{
-		$controller = 'Post';
-	}
-	
-	if(isset($params[2])){
-		$method = strtolower($params[2]);
-	}else{
-		$method = 'index';
-	}
+    if(isset($params[1])){
+        $controller = ucfirst(strtolower($params[1]));
+    }else{
+        $controller = 'Post';
+    }
+
+    if(isset($params[2])){
+        $method = strtolower($params[2]);
+    }else{
+        $method = 'index';
+    }
+}else{
+    $controller = 'Post';
+    $method = 'index';
 }
 
 $obj = new $controller;
